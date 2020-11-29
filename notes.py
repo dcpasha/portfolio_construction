@@ -19,3 +19,23 @@ scipy.stats.kurtosis(normal_rets)
 erk.is_normal(hfi)
 # But if we want to apply f-n(is_normal) to every column => .aggregate 
 hfi.aggregate(erk.is_normal)
+
+
+## Value at Risk
+# Semideviation
+hfi[hfi<0].std(ddof=0)
+
+# Returns the Z-score
+z = norm.ppf(0.05) # at 5% level.
+# Z-score tells us how far it is from the mean.
+
+# Returns the VaR at 5%
+-(hfi.mean() + z*hfi.std(ddof=0))
+
+
+# Cornish-Fisher
+# it adjusts for Skewness and Kurtosis 
+
+
+# CVaR is the average of all the returns
+
