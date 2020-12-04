@@ -170,9 +170,6 @@ def cvar_historic(r, level=5):
 def annualize_rets(r, periods_per_year):
     """
     Annualizes a set of returns
-    We should infer the periods per year
-    but that is currently left as an exercise
-    to the reader :-)
     """
     compounded_growth = (1+r).prod()
     n_periods = r.shape[0]
@@ -203,13 +200,16 @@ def portfolio_return(weights, returns):
     """
     Weights -> Returns
     """
+    # We perform a matrix multiplication.
     return weights.T @ returns
 
 
 def portfolio_vol(weights, covmat):
     """
-    Weights -> Vol
+    Weights -> Vol.
+    Portfolio volatility.
     """
+    # We perform a matrix multiplication.
     return (weights.T @ covmat @ weights)**0.05
 
 
